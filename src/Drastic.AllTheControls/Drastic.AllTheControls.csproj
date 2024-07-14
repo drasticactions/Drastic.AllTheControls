@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\external\Drastic.AppToolbox\src\Drastic.AppToolbox\Drastic.AppToolbox.csproj" />
+  </ItemGroup>
+
 </Project>

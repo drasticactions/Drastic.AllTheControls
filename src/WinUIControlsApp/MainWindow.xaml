@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="WinUIControlsApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIControlsApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:Drastic.AllTheControls.Model"
+    mc:Ignorable="d">
+
+    <Window.Content>
+        <NavigationView x:Name="MainNavigationView" SelectionChanged="MainNavigationView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="List" Content="ListView" Tag="ListView" />
+            </NavigationView.MenuItems>
+
+            <NavigationView.Content>
+                <SplitView IsPaneOpen="True" DisplayMode="Inline">
+                    <SplitView.Pane>
+                        <ListView x:Name="ControlListView"
+                                  SelectionMode="Single"
+                                  SelectionChanged="ControlListView_SelectionChanged">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="model:SamplePageItem">
+                                    <TextBlock Text="{x:Bind Name}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </SplitView.Pane>
+                    <SplitView.Content>
+                        <Frame x:Name="NavigationFrame">
+                            
+                        </Frame>
+                    </SplitView.Content>
+                </SplitView>
+            </NavigationView.Content>
+        </NavigationView>
+    </Window.Content>
+</Window>

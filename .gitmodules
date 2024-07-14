@@ -1,0 +1,3 @@
+[submodule "external/Drastic.AppToolbox"]
+	path = external/Drastic.AppToolbox
+	url = git@github.com:drasticactions/Drastic.AppToolbox.git

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WinUIControlsApp.TextGridView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIControlsApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="using:Drastic.AllTheControls.ViewModels"
+    mc:Ignorable="d">
+
+    <GridView ItemsSource="{x:Bind ViewModel.TextRecords}">
+        <GridView.ItemTemplate>
+            <DataTemplate x:DataType="viewmodels:TextRecord">
+                <RelativePanel Width="200" Height="200">
+                    <TextBlock Margin="5" Text="{x:Bind Text}" TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+                </RelativePanel>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+    </GridView>
+</Page>
