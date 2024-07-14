@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\external\Drastic.AppToolbox\src\Drastic.AppToolbox\Drastic.AppToolbox.csproj" />
+    <ProjectReference Include="..\Drastic.AllTheControls\Drastic.AllTheControls.csproj" />
   </ItemGroup>
 
 </Project>

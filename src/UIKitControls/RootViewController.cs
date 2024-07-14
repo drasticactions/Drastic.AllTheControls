@@ -1,3 +1,4 @@
+using Drastic.AllTheControls.ViewModels;
 using Drastic.AppToolbox.Services;
 using Microsoft.Extensions.DependencyInjection;
 using MonoTouch.Dialog;
@@ -30,6 +31,8 @@ public class RootViewController : UISplitViewController
             .AddSingleton<IAppDispatcher, AppDispatcher>()
             .AddSingleton<IErrorHandler, ErrorHandler>()
             .AddSingleton<IAsyncCommandFactory, AsyncCommandFactory>()
+            .AddSingleton<TextListViewModel>()
+            .AddSingleton<TextUITableViewController>()
             .AddKeyedSingleton<UIViewController>("DefaultBasicViewController", new BasicViewController())
             .AddKeyedSingleton<UIViewController>("DefaultDialogViewController", new DialogViewController(DialogViewGenerator.GenerateDefault()))
             .BuildServiceProvider();
@@ -60,6 +63,9 @@ public class RootViewController : UISplitViewController
                 break;
             case "Basic Sample":
                 this.SetViewController(this.serviceProvider.GetRequiredKeyedService<UIViewController>("DefaultBasicViewController"), UISplitViewControllerColumn.Secondary);
+                break;
+            case "TextListView - UITableView":
+                this.SetViewController(this.serviceProvider.GetRequiredService<TextUITableViewController>(), UISplitViewControllerColumn.Secondary);
                 break;
         }
     }
@@ -183,6 +189,13 @@ public class SidebarViewController : UIViewController, IUICollectionViewDelegate
         dialogItemSnapshot.ExpandItems(new[] { dialogItem });
         dialogItemSnapshot.AppendItems(new[] { new SidebarItem("Basic MD Sample", SidebarItemType.Row) }, dialogItem);
         this.dataSource!.ApplySnapshot(dialogItemSnapshot, new NSString(Guid.NewGuid().ToString()), true);
+        
+        var tableViewItemSnapshot = new NSDiffableDataSourceSectionSnapshot<SidebarItem>();
+        var tableItem = new SidebarItem("UITableView", SidebarItemType.Other);
+        tableViewItemSnapshot.AppendItems(new[] { tableItem });
+        tableViewItemSnapshot.ExpandItems(new[] { tableItem });
+        tableViewItemSnapshot.AppendItems(new[] { new SidebarItem("TextListView - UITableView", SidebarItemType.Row) }, tableItem);
+        this.dataSource!.ApplySnapshot(tableViewItemSnapshot, new NSString(Guid.NewGuid().ToString()), true);
     }
     
     /// <summary>
