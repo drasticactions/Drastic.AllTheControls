@@ -1,3 +1,5 @@
+using UIKitControls;
+
 namespace tvOSControlsApp;
 
 [Register ("AppDelegate")]
@@ -13,12 +15,7 @@ public class AppDelegate : UIApplicationDelegate {
 		Window = new UIWindow (UIScreen.MainScreen.Bounds);
 
 		// create a UIViewController with a single UILabel
-		var vc = new UIViewController ();
-		vc.View!.AddSubview (new UILabel (Window!.Frame) {
-			TextAlignment = UITextAlignment.Center,
-			Text = "Hello, tvOS!",
-			AutoresizingMask = UIViewAutoresizing.All,
-		});
+		var vc = new RootViewController ();
 		Window.RootViewController = vc;
 
 		// make the window visible

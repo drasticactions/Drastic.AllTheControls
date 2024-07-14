@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Drastic.MonoTouch.Dialog" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\external\Drastic.AppToolbox\src\Drastic.AppToolbox\Drastic.AppToolbox.csproj" />
+  </ItemGroup>
+
 </Project>
