@@ -9,30 +9,23 @@
     mc:Ignorable="d">
 
     <Window.Content>
-        <NavigationView x:Name="MainNavigationView" SelectionChanged="MainNavigationView_SelectionChanged">
+        <NavigationView x:Name="MainNavigationView"
+                        IsSettingsVisible="False"
+                        SelectionChanged="MainNavigationView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="List" Content="ListView" Tag="ListView" />
+                <NavigationViewItem Content="ListView" Icon="List">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="TextListPage" Tag="TextListPage"/>
+                        <NavigationViewItem Content="VariableHeightTextListPage" Tag="VariableHeightTextListPage"/>
+                        <NavigationViewItem Content="TextGridView" Tag="TextGridView"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.Content>
-                <SplitView IsPaneOpen="True" DisplayMode="Inline">
-                    <SplitView.Pane>
-                        <ListView x:Name="ControlListView"
-                                  SelectionMode="Single"
-                                  SelectionChanged="ControlListView_SelectionChanged">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="model:SamplePageItem">
-                                    <TextBlock Text="{x:Bind Name}"/>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </SplitView.Pane>
-                    <SplitView.Content>
-                        <Frame x:Name="NavigationFrame">
-                            
-                        </Frame>
-                    </SplitView.Content>
-                </SplitView>
+                <Frame x:Name="NavigationFrame">
+
+                </Frame>
             </NavigationView.Content>
         </NavigationView>
     </Window.Content>

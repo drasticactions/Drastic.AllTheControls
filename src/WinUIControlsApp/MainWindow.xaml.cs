@@ -44,20 +44,7 @@ namespace WinUIControlsApp
         {
             if (args.SelectedItem is NavigationViewItem item)
             {
-                switch(item.Tag)
-                {
-                    case "ListView":
-                        this.ControlListView.ItemsSource = this.listViewPages;
-                        break;
-                }
-            }
-        }
-
-        private void ControlListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.ControlListView.SelectedItem is SamplePageItem item)
-            {
-                switch(item.Name)
+                switch (item.Tag)
                 {
                     case "TextListPage":
                         this.NavigationFrame.Content = this.serviceProvider.GetRequiredService<TextListPage>();
@@ -69,10 +56,6 @@ namespace WinUIControlsApp
                         this.NavigationFrame.Content = this.serviceProvider.GetRequiredService<TextGridView>();
                         break;
                 }
-            }
-            else
-            {
-                this.NavigationFrame.Content = null;
             }
         }
     }
