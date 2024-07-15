@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiControlsApp.TextListPage"
              Title="TextListPage">
-    <ListView ItemsSource="{Binding TextRecords.Data}">
+    <ListView x:Name="InnerListView" ItemsSource="{Binding TextRecords.Data}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <TextCell Text="{Binding Text}" />

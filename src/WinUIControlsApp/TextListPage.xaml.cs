@@ -28,6 +28,7 @@ namespace WinUIControlsApp
         {
             this.InitializeComponent();
             this.DataContext = this.ViewModel = vm;
+            this.ViewModel.TextRecords.Bind(this.InnerListView);
         }
 
         public TextListViewModel ViewModel { get; }
