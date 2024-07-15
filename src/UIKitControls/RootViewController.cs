@@ -33,6 +33,7 @@ public class RootViewController : UISplitViewController
             .AddSingleton<IAsyncCommandFactory, AsyncCommandFactory>()
             .AddSingleton<TextListViewModel>()
             .AddSingleton<TextUITableViewController>()
+            .AddSingleton<TextBindUITableViewController>()
             .AddKeyedSingleton<UIViewController>("DefaultBasicViewController", new BasicViewController())
             .AddKeyedSingleton<UIViewController>("DefaultDialogViewController", new DialogViewController(DialogViewGenerator.GenerateDefault()))
             .BuildServiceProvider();
@@ -66,6 +67,9 @@ public class RootViewController : UISplitViewController
                 break;
             case "TextListView - UITableView":
                 this.SetViewController(this.serviceProvider.GetRequiredService<TextUITableViewController>(), UISplitViewControllerColumn.Secondary);
+                break;
+            case "TextListView - Bind - UITableView":
+                this.SetViewController(this.serviceProvider.GetRequiredService<TextBindUITableViewController>(), UISplitViewControllerColumn.Secondary);
                 break;
         }
     }
@@ -195,6 +199,7 @@ public class SidebarViewController : UIViewController, IUICollectionViewDelegate
         tableViewItemSnapshot.AppendItems(new[] { tableItem });
         tableViewItemSnapshot.ExpandItems(new[] { tableItem });
         tableViewItemSnapshot.AppendItems(new[] { new SidebarItem("TextListView - UITableView", SidebarItemType.Row) }, tableItem);
+        tableViewItemSnapshot.AppendItems(new[] { new SidebarItem("TextListView - Bind - UITableView", SidebarItemType.Row) }, tableItem);
         this.dataSource!.ApplySnapshot(tableViewItemSnapshot, new NSString(Guid.NewGuid().ToString()), true);
     }
     
