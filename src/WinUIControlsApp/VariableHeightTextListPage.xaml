@@ -9,7 +9,7 @@
     xmlns:viewmodels="using:Drastic.AllTheControls.ViewModels"
     mc:Ignorable="d">
 
-    <ListView ItemsSource="{x:Bind ViewModel.TextRecords}">
+    <ListView ItemsSource="{x:Bind ViewModel.TextRecords.Data}">
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="viewmodels:TextRecord">
                 <TextBlock Text="{x:Bind Text}" TextWrapping="Wrap" />

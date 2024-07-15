@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Drastic.AppToolbox.Data;
 using Drastic.AppToolbox.Services;
 using Drastic.AppToolbox.ViewModels;
 using System;
@@ -24,10 +25,10 @@ public class TextListViewModel : BaseViewModel
     {
         _textRecordFaker = new Faker<TextRecord>()
            .CustomInstantiator(f => new TextRecord(f.Lorem.Paragraphs(1, 5)));
-        this.TextRecords = this._textRecordFaker.Generate(100);
+        this.TextRecords = new ObservableDataSource<TextRecord>(this._textRecordFaker.Generate(100));
     }
 
-    public List<TextRecord> TextRecords { get; }
+    public ObservableDataSource<TextRecord> TextRecords { get; }
 }
 
 public record TextRecord(string Text);

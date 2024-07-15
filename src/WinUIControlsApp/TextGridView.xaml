@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="using:Drastic.AllTheControls.ViewModels"
     mc:Ignorable="d">
 
-    <GridView ItemsSource="{x:Bind ViewModel.TextRecords}">
+    <GridView ItemsSource="{x:Bind ViewModel.TextRecords.Data}">
         <GridView.ItemTemplate>
             <DataTemplate x:DataType="viewmodels:TextRecord">
                 <RelativePanel Width="200" Height="200">
